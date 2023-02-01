@@ -5,69 +5,70 @@ class NextScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height*0.45,
-      width: MediaQuery.of(context).size.width,
-      decoration:  BoxDecoration(
-        image: const DecorationImage(
-            image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD2IP0nytWPLDSehBze2YG4UreDxRsCTTwxw&usqp=CAU'),
-            fit: BoxFit.fill
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          margin: const EdgeInsets.only(top: 40.0,bottom: 20.0),
+          height: MediaQuery.of(context).size.height * 0.8,
+          width: MediaQuery.of(context).size.width,
+          decoration:  const BoxDecoration(
+            // borderRadius: BorderRadius.all(Radius.circular(16)),
+            image:  DecorationImage(
+                image: AssetImage('assets/street.jpeg'),
+                fit: BoxFit.fill
+            ),
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                  top: 60,
+                  left: 150,
+                  child:container(context,"Geriatrics", '18.44 %',)),
+              Positioned(
+                  top: 110,
+                  left: 80,
+                  child:container(context,"Oftmatology", '20.95 %',)),
+              Positioned(
+                  top:350,
+                  left:30,
+                  child:container(context,"Psychiatry", '19.44 %',)),
+              Positioned(
+                top: 500,
+                  right: 30,
+                  child:container(context,"Children pavilion", '22.82 %',)),
+            ],
+          ),
         ),
-        // color: Colors.pinkAccent.withOpacity(0.2),
-        // gradient: const  LinearGradient(
-        //   colors: [
-        //     Colors.black,
-        //     Colors.greenAccent
-        //   ],
-        //   begin: Alignment.topLeft,
-        //   end: Alignment.bottomRight,
-        // ),
-        // boxShadow:  [
-        //   BoxShadow(
-        //     color: Colors.blue.withOpacity(0.5),
-        //   ),
-        // ],
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-              top: 80,
-              left: 80,
-              child:container("Geriatrics", '18.44 %', context)),
-          Positioned(
-              top: 60,
-              left: 80,
-              child:container("Oftmatology", '20.95 %', context)),
-          Positioned(child:container("Psychiatry", '19.44 %', context)),
-          Positioned(child:container("Children pavilion", '22.82 %', context)),
-        ],
       ),
     );
   }
 }
-Widget container(String title,String subTitle,BuildContext context){
+Widget container(BuildContext context,String title,String subTitle,){
   return Container(
-    height: MediaQuery.of(context).size.height /30,
-    width: double.infinity,
+    height: MediaQuery.of(context).size.height/15,
+    // width:150,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(8),
         border: Border.all(color: Colors.white),
-      color: Colors.black12,
+      color: Colors.black54,
     ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const Icon(Icons.favorite_border),
+        const Icon(Icons.favorite_border,color: Colors.white,),
         Column(
           children: [
-            Text(title,style:const TextStyle(color: Colors.white,fontSize: 18,),),
-            Text(subTitle,style:const TextStyle(color: Colors.white,fontSize: 14,),)
+            Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: Text(title,style:const TextStyle(color: Colors.white,fontSize: 16,),),
+            ),
+            Text(subTitle,style:const TextStyle(color: Colors.white,fontSize: 12,),)
           ],
         ),
         Container(
-          width: 20,
-          height: 20,
-          decoration: const BoxDecoration(
+            width: 10,
+            height: 10,
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.white,
         )
